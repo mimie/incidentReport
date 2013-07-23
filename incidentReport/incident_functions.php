@@ -79,4 +79,18 @@ function getCompanyName($customerUserId){
   return $companyName;
 }
 
+function getCircuitId($ticketId){
+
+  $ticketId = mysql_real_escape_string($ticketId);
+  $sql = "SELECT cv.name FROM configitem_version cv, link_relation lr, configitem ci\n"
+       . "WHERE (cv.id = ci.last_version_id AND ci.id = lr.source_key)\n"
+       . "AND lr.target_key  = '{$ticketId}' ORDER BY cv.create_time DESC";
+  $result = mysql_query($sql) or die(mysql_error());
+  $row = mysql_fetch_assoc($result);
+  $circuitId = $row["name"];
+
+  return $circuitId;
+
+}
+
 ?>
