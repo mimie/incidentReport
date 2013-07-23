@@ -124,7 +124,7 @@ function getFaultClosedTime($ticketId){
   $create_time = $row["create_time"];
   
   if(isset($create_time)){
-    $create_time = date("M j, Y / h:i A",strtotime($create_time));
+    //$create_time = date("M j, Y / h:i A",strtotime($create_time));
     return $create_time;
   }
 }
@@ -138,14 +138,14 @@ function getOutageTime($ticketId){
   $outageTime = $row["value_date"];
 
   if($outageTime){
-     $outageTime = date("M j, Y / h:i A",strtotime($outageTime));
+     //$outageTime = date("M j, Y / h:i A",strtotime($outageTime));
      return $outageTime;
   }
 
   else{
      $ticketDetails = getTicketDetails($ticketId);
      $outageTime = $ticketDetails["create_time"];
-     $outageTime = date("M j, Y / h:i A",strtotime($outageTime));
+     //$outageTime = date("M j, Y / h:i A",strtotime($outageTime));
      return $outageTime;
   }
 }
@@ -161,7 +161,7 @@ function getResolvedOutageTime($ticketId){
   $outageResolvedTime = $row["value_date"];
 
   if($outageResolvedTime){
-    $outageResolvedTime = date("M j, Y / h:i A",strtotime($outageResolvedTime));
+    //$outageResolvedTime = date("M j, Y / h:i A",strtotime($outageResolvedTime));
     return $outageResolvedTime;
   }
 
@@ -171,4 +171,9 @@ function getResolvedOutageTime($ticketId){
   }
   
 }
-?>
+
+function timeFormat($time){
+
+   $timeFormat = date("M j, Y / h:i A",strtotime($time));
+   return $timeFormat;
+}
