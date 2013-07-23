@@ -20,5 +20,8 @@
 
   $companyName = getCompanyName($customerUserId);
   var_dump($companyName);
+
+  $circuitId = getCircuitId("229");
+  var_dump($circuitId);
   
 ?>
