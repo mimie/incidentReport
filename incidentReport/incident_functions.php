@@ -45,4 +45,17 @@ function getIncidentType($typeId){
     return "Network Outage";
   }
 }
+
+function getSiteAffected($customerUserId){
+  
+  $customerUserId = mysql_real_escape_string($customerUserId);
+  $sql = "SELECT location FROM customer_user WHERE login='{$customerUserId}'";
+  $result = mysql_query($sql) or die (mysql_error());
+  $row = mysql_fetch_assoc($result);
+
+  $siteAffected = $row["location"];
+
+  return $siteAffected;
+}
+
 ?>
