@@ -23,5 +23,8 @@
 
   $circuitId = getCircuitId("229");
   var_dump($circuitId);
+
+  $reporter = getReporter("229");
+  var_dump($reporter);
   
 ?>
