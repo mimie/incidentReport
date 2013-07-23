@@ -46,6 +46,10 @@ function getIncidentType($typeId){
   }
 }
 
+/*
+ *customerUserId is the customer_user_id from ticket details
+ *@return site Affected
+ */
 function getSiteAffected($customerUserId){
   
   $customerUserId = mysql_real_escape_string($customerUserId);
@@ -56,6 +60,23 @@ function getSiteAffected($customerUserId){
   $siteAffected = $row["location"];
 
   return $siteAffected;
+}
+
+/*
+ *customerUserId is the customer_user_id from ticket details
+ *@return company name
+ */
+function getCompanyName($customerUserId){
+
+  $customerUserId = mysql_real_escape_string($customerUserId);
+  $sql = "SELECT COMPNME FROM customer_user WHERE login='{$customerUserId}'";
+  $result = mysql_query($sql) or die (mysql_error());
+  $row = mysql_fetch_assoc($result);
+
+  $companyName = $row["COMPNME"];
+  $companyName = preg_replace("/\([^)]+\)/","",$companyName);
+  
+  return $companyName;
 }
 
 ?>
