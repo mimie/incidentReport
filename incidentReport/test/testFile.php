@@ -29,5 +29,11 @@
 
   $faultClosedTime = getFaultClosedTime("135804");
   var_dump($faultClosedTime);
+
+  $outageTime = getOutageTime("135804");
+  var_dump($outageTime);
+
+  $outageResolvedTime = getResolvedOutageTime("135804");
+  var_dump($outageResolvedTime);
   
 ?>
