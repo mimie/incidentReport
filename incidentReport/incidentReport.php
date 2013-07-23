@@ -40,8 +40,19 @@ table{
 <?php
 
   include 'dbcon.php';
+  include 'incident_functions.php';
 
   $ticketId = $_GET["ticketId"];
+  $ticketDetails = getTicketDetails($ticketId);
+  $customerUserId = $ticketDetails["customer_user_id"];
+  $companyName = getCompanyName($customerUserId);
+ 
+  $ticketNumber = $ticketDetails["ticketNumber"];
+
+  $typeId = $ticketDetails["type_id"];
+  $incidentType = getIncidentType($typeId);
+  $siteAffected = getSiteAffected($customerUserId);
+  $circuitId = getCircuitId($ticketId);
 
 ?>
 
@@ -54,7 +65,7 @@ table{
 </div>
 
 <div id="message">
-Dear Customer,<br>
+Dear <b><?=$companyName?></b>,<br>
 Please accept our apology for the downtime encountered on your subscribed service/s.
 <br><br>
 </div>
@@ -65,19 +76,19 @@ CUSTOMER INFORMATION
 <table>
   <tr>
    <td width="40%"><b>Ticket Number</b></td>
-   <td width="60%">: <?=$ticketId?></td>
+   <td width="60%">: <?=$ticketNumber?></td>
   </tr>
   <tr>
    <td width="40%"><b>Incident Type</b></td>
-   <td width="60%">: Network Outage</td>
+   <td width="60%">: <?=$incidentType?></td>
   </tr>
   <tr>
    <td width="40%"><b>Site Affected</b></td>
-   <td width="60%">: BPI-MERCADO HOSPITAL BATANGAS</td>
+   <td width="60%">: <?=$siteAffected?></td>
   </tr>
   <tr>
    <td width="40%"><b>Circuit ID</b></td>
-   <td width="60%">: IC-AAG-4720</td>
+   <td width="60%">: <?=$circuitId?></td>
   </tr>
   <tr>
    <td width="40%"><b>Reported by</b></td>

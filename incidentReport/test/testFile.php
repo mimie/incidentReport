@@ -35,5 +35,8 @@
 
   $outageResolvedTime = getResolvedOutageTime("135804");
   var_dump($outageResolvedTime);
+
+  $outageDuration = getOutageDuration($outageTime,$outageResolvedTime);
+  var_dump($outageDuration);
   
 ?>
