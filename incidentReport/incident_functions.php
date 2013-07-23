@@ -79,6 +79,10 @@ function getCompanyName($customerUserId){
   return $companyName;
 }
 
+/*
+ *ticket Id
+ *@return circuit id of a specific ticket number
+ */
 function getCircuitId($ticketId){
 
   $ticketId = mysql_real_escape_string($ticketId);
@@ -93,4 +97,14 @@ function getCircuitId($ticketId){
 
 }
 
+function getReporter($ticketId){
+  
+  $ticketId = mysql_real_escape_string($ticketId);
+  $sql = "SELECT value_text FROM dynamic_field_value WHERE object_id = '{$ticketId}' AND field_id = 50";
+  $result = mysql_query($sql) or die(mysql_error());
+  $row = mysql_fetch_assoc($result);
+  $reporter = $row["value_text"];
+
+  return $reporter;
+}
 ?>
