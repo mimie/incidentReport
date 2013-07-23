@@ -177,3 +177,26 @@ function timeFormat($time){
    $timeFormat = date("M j, Y / h:i A",strtotime($time));
    return $timeFormat;
 }
+
+function getOutageDuration($outageTime,$resolvedTime){
+   
+  $totalOutageSec = strtotime($resolvedTime)-strtotime($outageTime);
+ 
+  if($totalOutageSec >= 60){
+    $total_outage_hrs = 0;
+    $total_outage_mins = $totalOutageSec / 60;
+        if ($total_outage_mins >= 60){
+              $total_outage_hrs = floor($total_outage_mins / 60);
+              $total_outage_mins = ceil($total_outage_mins - ($total_outage_hrs*60));
+                } 
+        else{
+              $total_outage_mins = ceil($total_outage_mins);
+            }
+   }else{
+       $total_outage_hrs = 0;
+       $total_outage_mins = 0;
+   }
+
+ return $total_outage_hrs." hr(s). ".$total_outage_mins." min(s).";
+
+}
