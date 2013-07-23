@@ -37,6 +37,14 @@ table{
 </head>
 <body>
 
+<?php
+
+  include 'dbcon.php';
+
+  $ticketId = $_GET["ticketId"];
+
+?>
+
 <div>
  <img id="logo" src="globe_logo.png">
 </div>
@@ -57,7 +65,7 @@ CUSTOMER INFORMATION
 <table>
   <tr>
    <td width="40%"><b>Ticket Number</b></td>
-   <td width="60%">: 1031250</td>
+   <td width="60%">: <?=$ticketId?></td>
   </tr>
   <tr>
    <td width="40%"><b>Incident Type</b></td>
