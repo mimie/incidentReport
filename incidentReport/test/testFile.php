@@ -17,5 +17,8 @@
   $customerUserId = $details["customer_user_id"];
   $siteAffected = getSiteAffected($customerUserId);
   var_dump($siteAffected);
+
+  $companyName = getCompanyName($customerUserId);
+  var_dump($companyName);
   
 ?>
