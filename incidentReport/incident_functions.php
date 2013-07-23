@@ -107,4 +107,22 @@ function getReporter($ticketId){
 
   return $reporter;
 }
+
+function getFaultClosedTime($ticketId){
+
+  $ticketId = mysql_real_escape_string($ticketId);
+  $sql = "SELECT create_time FROM ticket_history\n" 
+       . "WHERE history_type_id ='27'\n"
+       . "AND ticket_id = '{$ticketId}'"
+       . "AND name LIKE '%\%\%closed successful\%\%'";
+  $result = mysql_query($sql) or die(mysql_error());
+  $row = mysql_fetch_assoc($result);
+
+  $create_time = $row["create_time"];
+  
+  if(isset($create_time)){
+    $create_time = date("M j, Y / h:i A",strtotime($create_time));
+    return $create_time;
+  }
+}
 ?>
