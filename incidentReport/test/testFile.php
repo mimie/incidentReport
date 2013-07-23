@@ -26,5 +26,8 @@
 
   $reporter = getReporter("229");
   var_dump($reporter);
+
+  $faultClosedTime = getFaultClosedTime("135804");
+  var_dump($faultClosedTime);
   
 ?>
