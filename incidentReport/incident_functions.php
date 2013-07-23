@@ -1,5 +1,8 @@
 <?php
 
+/*
+ *@return ticket details in array
+ */
 function getTicketDetails($ticketId){
 
   $details = array();
@@ -19,5 +22,27 @@ function getTicketDetails($ticketId){
 
   return $details;
   
+}
+
+/*
+ *typeId is type_id from ticket details
+ *@return incident Type
+ */
+function getIncidentType($typeId){
+
+  $typeId = mysql_real_escape_string($typeId);
+  $sql = "SELECT name FROM ticket_type WHERE id = {$typeId}";
+  $result = mysql_query($sql) or die(mysql_error());
+  $row = mysql_fetch_assoc($result);
+
+  $incidentName = $row["name"];
+
+  if($incidentName == 'S1 - Network Outage'){
+    return "Regular Outage";
+  }
+
+  else{
+    return "Network Outage";
+  }
 }
 ?>
