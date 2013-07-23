@@ -97,6 +97,9 @@ function getCircuitId($ticketId){
 
 }
 
+/*
+ *@return name,email,source who reported the incident
+ */
 function getReporter($ticketId){
   
   $ticketId = mysql_real_escape_string($ticketId);
@@ -124,5 +127,48 @@ function getFaultClosedTime($ticketId){
     $create_time = date("M j, Y / h:i A",strtotime($create_time));
     return $create_time;
   }
+}
+
+function getOutageTime($ticketId){
+
+  $ticketId = mysql_real_escape_string($ticketId);
+  $sql = "SELECT value_date FROM dynamic_field_value WHERE object_id = '{$ticketId}' AND field_id = 36";
+  $result = mysql_query($sql) or die(mysql_error());
+  $row = mysql_fetch_assoc($result);
+  $outageTime = $row["value_date"];
+
+  if($outageTime){
+     $outageTime = date("M j, Y / h:i A",strtotime($outageTime));
+     return $outageTime;
+  }
+
+  else{
+     $ticketDetails = getTicketDetails($ticketId);
+     $outageTime = $ticketDetails["create_time"];
+     $outageTime = date("M j, Y / h:i A",strtotime($outageTime));
+     return $outageTime;
+  }
+}
+
+function getResolvedOutageTime($ticketId){
+
+  $ticketId = mysql_real_escape_string($ticketId);
+  $sql = "SELECT value_date FROM dynamic_field_value\n"
+       . "WHERE object_id = '{$ticketId}'\n"
+       . "AND field_id ='37'";
+  $result = mysql_query($sql) or die(mysql_error());
+  $row = mysql_fetch_assoc($result);
+  $outageResolvedTime = $row["value_date"];
+
+  if($outageResolvedTime){
+    $outageResolvedTime = date("M j, Y / h:i A",strtotime($outageResolvedTime));
+    return $outageResolvedTime;
+  }
+
+  else{
+    $outageResolvedTime = getFaultClosedTime($ticketId);
+    return $outageResolvedTime;
+  }
+  
 }
 ?>
