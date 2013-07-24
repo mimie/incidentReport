@@ -59,7 +59,9 @@ table{
   $outageTime = getOutageTime($ticketId);
   $resolvedTime = getResolvedOutageTime($ticketId);
   $outageDuration = getOutageDuration($outageTime,$resolvedTime);
-  
+  $reasonForOutage = getReasonForOutage($ticketId);  
+
+  $restorationDetails = displayRestorationDetails($ticketId);
 ?>
 
 <div>
@@ -140,7 +142,7 @@ CONTAINMENT/INTERIM ACTIONS
 <div id="info">
 REASON FOR OUTAGE
 </div>
-<div>Here is the reason for outage.</div>
+<div><?=$reasonForOutage?></div>
 
 <div id="info">
 CORRECTIVE ACTIONS
@@ -155,7 +157,7 @@ PREVENTIVE ACTIONS
 <div id="info">
 RESTORATION DETAILS
 </div>
-<div>Restoration Details.</div>
+<div><?php echo $restorationDetails;?></div>
 
 </body>
 </head>
