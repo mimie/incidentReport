@@ -53,7 +53,13 @@ table{
   $incidentType = getIncidentType($typeId);
   $siteAffected = getSiteAffected($customerUserId);
   $circuitId = getCircuitId($ticketId);
-
+  $reportedBy = getReporter($ticketId);
+  $faultCreateTime = $ticketDetails["create_time"]; 
+  $faultClosedTime = getFaultClosedTime($ticketId);
+  $outageTime = getOutageTime($ticketId);
+  $resolvedTime = getResolvedOutageTime($ticketId);
+  $outageDuration = getOutageDuration($outageTime,$resolvedTime);
+  
 ?>
 
 <div>
@@ -92,27 +98,27 @@ CUSTOMER INFORMATION
   </tr>
   <tr>
    <td width="40%"><b>Reported by</b></td>
-   <td width="60%">: mgbgestoso@bpi.com.ph</td>
+   <td width="60%">: <?=$reportedBy?></td>
   </tr>
   <tr>
    <td width="40%"><b>Fault Reported Date/Time</b></td>
-   <td width="60%">: Nov 11, 2012 / 02:33 AM</td>
+   <td width="60%">: <?=timeFormat($faultCreateTime)?></td>
   </tr>
   <tr>
    <td width="40%"><b>Fault Closed Date/Time</b></td>
-   <td width="60%">: Nov 11, 2012 / 11:46 AM</td>
+   <td width="60%">: <?=timeFormat($faultClosedTime)?></td>
   </tr>
   <tr>
    <td width="40%"><b>Outage Date/Time</b></td>
-   <td width="60%">: Nov 11, 2012 / 02:33 AM</td>
+   <td width="60%">: <?=timeFormat($outageTime)?></td>
   </tr>
   <tr>
    <td width="40%"><b>Outage Resolved Date/Time</b></td>
-   <td width="60%">: Nov 11, 2012 / 02:33 AM</td>
+   <td width="60%">: <?=timeFormat($resolvedTime)?></td>
   </tr>
   <tr>
    <td width="40%"><b>Outage Duration</b></td>
-   <td width="60%">: Nov 11, 2012 / 02:33 AM</td>
+   <td width="60%">: <?=$outageDuration?></td>
   </tr>
 <table>
 
