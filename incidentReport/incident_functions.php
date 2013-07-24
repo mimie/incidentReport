@@ -227,4 +227,40 @@ function getReasonForOutage($ticketId){
   
 }
 
+function getRestorationDetails($ticketId){
+
+  $ticketId = mysql_real_escape_string($ticketId);
+  $restorationDetails = array();
+  $sql = "SELECT a_body,create_time FROM article\n" 
+       . "WHERE article_type_id = 10\n" 
+       . "AND article_sender_type_id = 1\n" 
+       . "AND ticket_id = '{$ticketId}'";
+  $result = mysql_query($sql) or die(mysql_error());
+
+  while($row = mysql_fetch_assoc($result)){
+    $time = $row["create_time"];
+    $details = $row["a_body"];
+    $restorationDetails[$time] = $details;
+  }
+
+  return $restorationDetails;
+}
+
+function displayRestorationDetails($ticketId){
+
+  $restorationDetails = getRestorationDetails($ticketId);
+
+  $html = "<table>";
+
+  foreach($restorationDetails as $time=>$details){
+    $html = $html."<tr>"
+          . "<td>$time</time>"
+          . "<td>$details</td>"
+          . "</tr>";
+  }
+
+  $html = $html."</table>";
+  return $html;
+        
+}
 ?>
