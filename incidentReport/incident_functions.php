@@ -24,6 +24,17 @@ function getTicketDetails($ticketId){
   
 }
 
+function getTicketNumber($ticketNumber){
+  
+  $ticketNumber = mysql_real_escape_string($ticketNumber);
+  $sqlTicketNumber = "SELECT id FROM ticket where tn='{$ticketNumber}'";
+  $result = mysql_query($sqlTicketNumber) or die(mysql_error());
+  $row = mysql_fetch_assoc($result);
+  $ticketNumber = $row["tn"];
+
+  return $ticketNumber;
+}
+
 /*
  *typeId is type_id from ticket details
  *@return incident Type
