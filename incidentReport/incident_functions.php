@@ -298,4 +298,31 @@ function getAgentName($agentId){
   $agentName = $row["first_name"]." ".$row["last_name"];
   return $agentName;
 }
+
+function getContainmentAction($ticketId){
+
+  $dynamicField = "SELECT id FROM dynamic_field WHERE name='containtmentInterim'";
+  $resultId = mysql_query($dynamicField) or die(mysql_error());
+  $row = mysql_fetch_assoc($resultId);
+  $dynamicFieldId = $row["id"];
+
+  $sql = "SELECT value_text FROM dynamic_field_value\n"
+       . "WHERE object_id = '$ticketId'\n"
+       . "AND field_id = '$dynamicFieldId'";
+  $result = mysql_query($sql) or die(mysql_error());
+  $row = mysql_fetch_assoc($result);
+  $containmentAction = $row["value_text"];
+
+  return $containmentAction;
+}
+
+function getCorrectiveAction($ticketId){
+
+  $sql = "SELECT a_body FROM article WHERE ticket_id = '$ticketId' AND article_type_id = '10' ORDER BY create_time DESC LIMIT 1";
+  $result = mysql_query($sql) or die(mysql_error());
+  $row = mysql_fetch_assoc($result);
+  $correctiveAction = $row["a_body"];
+
+  return $correctiveAction;
+}
 ?>

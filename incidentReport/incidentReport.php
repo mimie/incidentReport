@@ -62,6 +62,14 @@ table{
   $reasonForOutage = getReasonForOutage($ticketId);  
 
   $restorationDetails = displayRestorationDetails($ticketId);
+
+  $openCreateId = $ticketDetails["create_by"];
+  $closeCreateId = getAgentCloseId($ticketId);
+  $faultHandlers = getFaultHandlerNames($openCreateId,$closeCreateId);
+  $troubleReported = $ticketDetails["title"];
+  $containmentAction = getContainmentAction($ticketId);
+  $correctiveAction = getCorrectiveAction($ticketId);
+  
 ?>
 
 <div>
@@ -125,19 +133,19 @@ CUSTOMER INFORMATION
 <table>
 
 <div id="info">
-FAULT HANDLED
+FAULT HANDLED BY
 </div>
-<div>Describe the fault handled.</div>
+<div><?=$faultHandlers?></div>
 
 <div id="info">
 DEFINITION OF THE PROBLEM
 </div>
-<div>Here is the defintion of the problem.</div>
+<div><?=$troubleReported?></div>
 
 <div id="info">
 CONTAINMENT/INTERIM ACTIONS
 </div>
-<div>Here is the interim actions.</div>
+<div><?=$containmentAction?></div>
 
 <div id="info">
 REASON FOR OUTAGE
@@ -147,7 +155,7 @@ REASON FOR OUTAGE
 <div id="info">
 CORRECTIVE ACTIONS
 </div>
-<div>Here is the corrective actions.</div>
+<div><?=$correctiveAction?></div>
 
 <div id="info">
 PREVENTIVE ACTIONS

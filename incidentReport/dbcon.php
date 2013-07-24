@@ -4,5 +4,5 @@
     die('Could not connect: ' . mysql_error());
   }
 
-  mysql_select_db("otrs_globe",$db);
+  mysql_select_db("otrs_test_env",$db);
 ?>
