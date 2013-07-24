@@ -279,4 +279,23 @@ function getAgentCloseId($ticketId){
   return $closeId;
 
 }
+
+function getFaultHandlerNames($openCreateId,$closeCreateId){
+ 
+  $openAgentName = getAgentName($openCreateId);
+  $closeAgentName = getAgentName($closeCreateId);
+  $faultHandlers = $openAgentName." / ".$closeAgentName;
+
+  return $faultHandlers;
+}
+
+function getAgentName($agentId){
+
+  $agentSql = "SELECT first_name,last_name FROM users where id='$agentId'";
+  $result = mysql_query($agentSql) or die(mysql_error());
+  $row = mysql_fetch_assoc($result);
+
+  $agentName = $row["first_name"]." ".$row["last_name"];
+  return $agentName;
+}
 ?>
