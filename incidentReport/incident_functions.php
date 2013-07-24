@@ -263,4 +263,20 @@ function displayRestorationDetails($ticketId){
   return $html;
         
 }
+
+
+function getAgentCloseId($ticketId){
+
+  $ticketId = mysql_real_escape_string($ticketId);
+  $sql = "SELECT create_by FROM ticket_history\n" 
+       . "WHERE history_type_id ='27'\n"
+       . "AND ticket_id = '{$ticketId}'"
+       . "AND name LIKE '%\%\%closed successful\%\%'";
+  $result = mysql_query($sql) or die(mysql_error());
+  $row = mysql_fetch_assoc($result);
+
+  $closeId = $row["create_by"];
+  return $closeId;
+
+}
 ?>
