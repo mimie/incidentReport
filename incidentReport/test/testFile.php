@@ -38,5 +38,8 @@
 
   $outageDuration = getOutageDuration($outageTime,$outageResolvedTime);
   var_dump($outageDuration);
+
+  $rfo = getReasonForOutage("299");
+  var_dump($rfo);
   
 ?>
