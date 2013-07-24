@@ -50,5 +50,10 @@
 
   $agentCloseId = getAgentCloseId("299");
   var_dump($agentCloseId);
+
+  $agentOpenId = $details["create_by"];
+  $faultHandlers = getFaultHandlerNames($agentCloseId,$agentOpenId);
+  var_dump($faultHandlers);
+
   
 ?>
