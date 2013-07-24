@@ -41,5 +41,14 @@
 
   $rfo = getReasonForOutage("299");
   var_dump($rfo);
+
+  $restorationDetails = getRestorationDetails("299");
+  var_dump($restorationDetails);
+
+  $htmlRestoration = displayRestorationDetails("299");
+  var_dump($htmlRestoration);
+
+  $agentCloseId = getAgentCloseId("299");
+  var_dump($agentCloseId);
   
 ?>
