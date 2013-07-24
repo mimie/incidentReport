@@ -211,3 +211,20 @@ function getOutageDuration($outageTime,$resolvedTime){
  return $total_outage_hrs." hr(s). ".$total_outage_mins." min(s).";
 
 }
+
+function getReasonForOutage($ticketId){
+
+  $ticketId = mysql_real_escape_string($ticketId);
+  $rfoSql = "SELECT value_text FROM dynamic_field_value\n" 
+          . "WHERE object_id = '{$ticketId}' AND field_id = 57";
+  $result = mysql_query($rfoSql) or die(mysql_error());
+  $row = mysql_fetch_assoc($result);
+  $reasonForOutage = $row["value_text"];
+
+  isset($reasonForOutage) ? $reasonForOutage : $reasonForOutage = "No RFO indicated";
+
+  return $reasonForOutage;
+  
+}
+
+?>
