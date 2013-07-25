@@ -55,5 +55,8 @@
   $faultHandlers = getFaultHandlerNames($agentCloseId,$agentOpenId);
   var_dump($faultHandlers);
 
+  $containmentActions = getContainmentAction("299");
+  var_dump($containmentActions);
+
   
 ?>
