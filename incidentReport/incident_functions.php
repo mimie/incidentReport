@@ -325,4 +325,22 @@ function getCorrectiveAction($ticketId){
 
   return $correctiveAction;
 }
+
+function generatePDF($html,$ticketNumber){
+
+  require_once("dompdf/dompdf_config.inc.php");                                                 
+
+  $fileName = "ireport_".$ticketNumber.".pdf";                                                                      
+  $fileLocation = "pdf/".$fileName;                                        
+     
+  $dompdf = new DOMPDF();
+  $dompdf->load_html($html);                                                                    
+  $dompdf->set_paper('Letter','portrait');                                                         
+     
+  $dompdf->render();                                                                            
+  file_put_contents($fileLocation, $dompdf->output( array("compress" => 0) ));                  
+                                                                                                   
+  return $fileName; 
+
+}
 ?>
