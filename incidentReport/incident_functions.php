@@ -250,12 +250,12 @@ function displayRestorationDetails($ticketId){
 
   $restorationDetails = getRestorationDetails($ticketId);
 
-  $html = "<table padding='6px'>";
+  $html = "<table cellpadding='6' style='border:1px dotted #848484; border-collapse:collapse;'>";
 
   foreach($restorationDetails as $time=>$details){
     $html = $html."<tr>"
-          . "<td width='13%'>$time</time>"
-          . "<td width='87%'>$details</td>"
+          . "<td width='13%' style='border:1px dotted #848484;'>$time</time>"
+          . "<td width='87%' style='border:1px dotted #848484;'>$details</td>"
           . "</tr>";
   }
 
