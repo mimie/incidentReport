@@ -58,5 +58,8 @@
   $containmentActions = getContainmentAction("299");
   var_dump($containmentActions);
 
+  $ticketId = getTicketId('1093994');
+  var_dump($ticketId);
+
   
 ?>
