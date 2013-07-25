@@ -15,7 +15,7 @@ div{
   text-align:center;
   color:black;
   font-weight:bold;
-  font-family:Courier New;
+  font-family:Courier New,serif;
   font-size: 110%;
   letter-spacing:22px;
 }
@@ -31,18 +31,28 @@ div{
 
 table{
   padding:4px;
+  font-family:Courier New,serif;
+  font-size:large;
+}
+
+#details{
+  font-family:Courier New,serif;
+  font-size:large;
 }
 </style> 
 <title>Incident Report</title>
 </head>
 <body>
 
+
 <?php
 
   include 'dbcon.php';
   include 'incident_functions.php';
 
-  $ticketId = $_GET["ticketId"];
+  //$ticketNumber = $_GET['ticketNumber'];
+  $ticketNumber = '1093994'; 
+  $ticketId = getTicketId($ticketNumber);
   $ticketDetails = getTicketDetails($ticketId);
   $customerUserId = $ticketDetails["customer_user_id"];
   $companyName = getCompanyName($customerUserId);
@@ -80,7 +90,7 @@ table{
  INCIDENT REPORT
 </div>
 
-<div id="message">
+<div id="details">
 Dear <b><?=$companyName?></b>,<br>
 Please accept our apology for the downtime encountered on your subscribed service/s.
 <br><br>
@@ -135,37 +145,37 @@ CUSTOMER INFORMATION
 <div id="info">
 FAULT HANDLED BY
 </div>
-<div><?=$faultHandlers?></div>
+<div id="details"><?=$faultHandlers?></div>
 
 <div id="info">
 DEFINITION OF THE PROBLEM
 </div>
-<div><?=$troubleReported?></div>
+<div id="details"><?=$troubleReported?></div>
 
 <div id="info">
 CONTAINMENT/INTERIM ACTIONS
 </div>
-<div><?=$containmentAction?></div>
+<div id="details"><?=$containmentAction?></div>
 
 <div id="info">
 REASON FOR OUTAGE
 </div>
-<div><?=$reasonForOutage?></div>
+<div id="details"><?=$reasonForOutage?></div>
 
 <div id="info">
 CORRECTIVE ACTIONS
 </div>
-<div><?=$correctiveAction?></div>
+<div id="details"><?=$correctiveAction?></div>
 
 <div id="info">
 PREVENTIVE ACTIONS
 </div>
-<div>Here is the preventive actions.</div>
+<div id="details">Here is the preventive actions.</div>
 
 <div id="info">
 RESTORATION DETAILS
 </div>
-<div><?php echo $restorationDetails;?></div>
+<?php echo $restorationDetails;?>
 
 </body>
 </head>
