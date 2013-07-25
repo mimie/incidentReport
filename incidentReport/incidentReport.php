@@ -1,3 +1,8 @@
+<?php
+
+  /*ob_start();
+  require_once("dompdf/dompdf_config.inc.php");*/
+?>
 <html>
 <head>
 <!--<link rel="stylesheet" type="text/css" url="design.css">-->
@@ -43,6 +48,12 @@ table{
 <title>Incident Report</title>
 </head>
 <body>
+<script type="text/php">
+         if (isset($pdf)){
+           $font = Font_Metrics::get_font("helvetica", "bold");
+           $pdf->page_text(420, 565, "{PAGE_NUM}", $font, 9, array(0,0,0));
+         }
+</script>
 
 
 <?php
@@ -175,8 +186,13 @@ PREVENTIVE ACTIONS
 <div id="info">
 RESTORATION DETAILS
 </div>
+<div>
 <?php echo $restorationDetails;?>
-
+</div>
 </body>
 </head>
 </html>
+<?php
+  /*$html = ob_get_clean();
+  $pdfFile = generatePDF($html,$ticketNumber);*/
+?>
