@@ -24,15 +24,15 @@ function getTicketDetails($ticketId){
   
 }
 
-function getTicketNumber($ticketNumber){
+function getTicketId($ticketNumber){
   
   $ticketNumber = mysql_real_escape_string($ticketNumber);
   $sqlTicketNumber = "SELECT id FROM ticket where tn='{$ticketNumber}'";
   $result = mysql_query($sqlTicketNumber) or die(mysql_error());
   $row = mysql_fetch_assoc($result);
-  $ticketNumber = $row["tn"];
+  $ticketId = $row["id"];
 
-  return $ticketNumber;
+  return $ticketId;
 }
 
 /*
@@ -250,12 +250,12 @@ function displayRestorationDetails($ticketId){
 
   $restorationDetails = getRestorationDetails($ticketId);
 
-  $html = "<table>";
+  $html = "<table padding='6px'>";
 
   foreach($restorationDetails as $time=>$details){
     $html = $html."<tr>"
-          . "<td>$time</time>"
-          . "<td>$details</td>"
+          . "<td width='13%'>$time</time>"
+          . "<td width='87%'>$details</td>"
           . "</tr>";
   }
 
