@@ -254,8 +254,8 @@ function displayRestorationDetails($ticketId){
 
   foreach($restorationDetails as $time=>$details){
     $html = $html."<tr>"
-          . "<td width='13%' style='border:1px dotted #848484;'>$time</time>"
-          . "<td width='87%' style='border:1px dotted #848484;'>$details</td>"
+          . "<td align='center' width='25%' style='border:1px dotted #848484;'>$time</time>"
+          . "<td width='75%' style='border:1px dotted #848484;'>$details</td>"
           . "</tr>";
   }
 
