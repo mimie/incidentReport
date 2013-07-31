@@ -189,6 +189,12 @@ function timeFormat($time){
    return $timeFormat;
 }
 
+function timeFormatRestoration($time){
+
+   $timeFormat = date("m/d/y h:i A",strtotime($time));
+   return $timeFormat;
+}
+
 function getOutageDuration($outageTime,$resolvedTime){
    
   $totalOutageSec = strtotime($resolvedTime)-strtotime($outageTime);
@@ -254,7 +260,7 @@ function displayRestorationDetails($ticketId){
 
   foreach($restorationDetails as $time=>$details){
     $html = $html."<tr>"
-          . "<td align='center' width='25%' style='border:1px dotted #848484;'>$time</time>"
+          . "<td align='center' width='25%' style='border:1px dotted #848484;'>".timeFormatRestoration($time)."</time>"
           . "<td width='75%' style='border:1px dotted #848484;'>$details</td>"
           . "</tr>";
   }
