@@ -43,14 +43,15 @@ table{
   font-family:Courier New,serif;
   font-size:large;
 }
+
 </style> 
 <title>Incident Report</title>
 </head>
 <body>
 <script type="text/php">
          if (isset($pdf)){
-           $font = Font_Metrics::get_font("Courier New", "bold");
-           $pdf->page_text(300, 750, "{PAGE_NUM}", $font, 9, array(0,0,0));
+           $font = Font_Metrics::get_font("Arial", "bold");
+           $pdf->page_text(300, 750, "{PAGE_NUM}", $font,12, array(0,0,0));
          }
 </script>
 
@@ -166,8 +167,7 @@ DEFINITION OF THE PROBLEM
 <div id="info">
 CONTAINMENT/INTERIM ACTIONS
 </div>
-<!--<div id="details"><?=$containmentAction?></div>-->
-<div id="details">Here is the sample interim Actions.</div>
+<div id="details"><?=$containmentAction?></div>
 
 <div id="info">
 REASON FOR OUTAGE
