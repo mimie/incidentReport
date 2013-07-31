@@ -339,8 +339,5 @@ function generatePDF($html,$ticketNumber){
      
   $dompdf->render();                                                                            
   file_put_contents($fileLocation, $dompdf->output( array("compress" => 0) ));                  
-                                                                                                   
-  return $fileName; 
-
 }
 ?>
