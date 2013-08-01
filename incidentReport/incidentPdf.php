@@ -184,15 +184,15 @@ PREVENTIVE ACTIONS
 </div>
 <div id="details">Here is the preventive actions.</div>
 
-<div id="info">
+<!--<div id="info">
 RESTORATION DETAILS
 </div>
 <div>
-<?php echo $restorationDetails;?>
-</div>
+<?php //echo $restorationDetails;?>
+</div>-->
 </body>
 </html>
 <?php
-  $html = ob_get_clean();
-  $pdfFile = generatePDF($html,$ticketNumber);
+  $CustomerInfoHtml = ob_get_clean();
+  $pdfFile = generatePDF($CustomerInfoHtml,$ticketNumber);
 ?>
