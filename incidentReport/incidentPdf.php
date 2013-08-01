@@ -196,3 +196,17 @@ RESTORATION DETAILS
   $CustomerInfoHtml = ob_get_clean();
   $pdfFile = generatePDF($CustomerInfoHtml,$ticketNumber);
 ?>
+
+<?php ob_start();?>
+<div id="info">
+RESTORATION DETAILS
+</div>
+<div>
+<?php echo $restorationDetails;?>
+</div>
+<?php
+  $restorationHtml = ob_get_clean();
+  $pdfFile = generateRestorationPDF($restorationHtml,$ticketNumber);
+?>
+
+
