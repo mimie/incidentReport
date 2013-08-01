@@ -192,12 +192,24 @@ PREVENTIVE ACTIONS
 ?>
 
 <?php ob_start();?>
+<html>
+<head>
+</head>
+<body>
+<script type="text/php">
+         if (isset($pdf)){
+           $font = Font_Metrics::get_font("Arial", "bold");
+           $pdf->page_text(300, 750, "{PAGE_NUM}", $font,12, array(0,0,0));
+         }
+</script>
 <div style="background-color:#C0C0C0;color:black;font-weight:bold;font-family:Courier;font-size: 110%;letter-spacing:4px;padding:5px 10px 5px 10px;">
 RESTORATION DETAILS
 </div><br>
 <div style="font-family:Courier">
 <?php echo $restorationDetails;?>
 </div>
+</body>
+</html>
 <?php
   $restorationHtml = ob_get_clean();
   $pdfFile = generateRestorationPDF($restorationHtml,$ticketNumber);
