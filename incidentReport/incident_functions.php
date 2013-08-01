@@ -346,4 +346,19 @@ function generatePDF($html,$ticketNumber){
   $dompdf->render();                                                                            
   file_put_contents($fileLocation, $dompdf->output( array("compress" => 0) ));                  
 }
+
+function generateRestorationPDF($html,$ticketNumber){
+
+  require_once("dompdf/dompdf_config.inc.php");                                                 
+
+  $fileName = "restorationDetails_".$ticketNumber.".pdf";                                                                      
+  $fileLocation = "pdf/".$fileName;                                        
+     
+  $dompdf = new DOMPDF();
+  $dompdf->load_html($html);                                                                    
+  $dompdf->set_paper('Letter','portrait');                                                         
+     
+  $dompdf->render();                                                                            
+  file_put_contents($fileLocation, $dompdf->output( array("compress" => 0) ));                  
+}
 ?>
