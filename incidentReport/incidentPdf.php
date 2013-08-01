@@ -19,7 +19,7 @@ div{
   text-align:center;
   color:black;
   font-weight:bold;
-  font-family:Courier New,serif;
+  font-family:Courier,serif;
   font-size: 110%;
   letter-spacing:22px;
 }
@@ -28,20 +28,20 @@ div{
   background-color:#C0C0C0;
   color:black;
   font-weight:bold;
-  font-family:Courier New;
+  font-family:Courier;
   font-size: 110%;
   letter-spacing:4px;
 }
 
 table{
   padding:4px;
-  font-family:Courier New,serif;
-  font-size:large;
+  font-family:Courier,serif;
+  font-size:medium;
 }
 
 #details{
-  font-family:Courier New,serif;
-  font-size:large;
+  font-family:Courier,serif;
+  font-size:l;
 }
 
 </style> 
@@ -157,39 +157,33 @@ CUSTOMER INFORMATION
 <div id="info">
 FAULT HANDLE BY
 </div>
-<div id="details"><?=$faultHandlers?></div>
+<div id="details"><?=$faultHandlers?><br></div>
 
 <div id="info">
 DEFINITION OF THE PROBLEM
 </div>
-<div id="details"><?=$troubleReported?></div>
+<div id="details"><?=$troubleReported?><br></div>
 
 <div id="info">
 CONTAINMENT/INTERIM ACTIONS
 </div>
-<div id="details"><?=$containmentAction?></div>
+<div id="details"><?=$containmentAction?><br></div>
 
 <div id="info">
 REASON FOR OUTAGE
 </div>
-<div id="details"><?=$reasonForOutage?></div>
+<div id="details"><?=$reasonForOutage?><br></div>
 
 <div id="info">
 CORRECTIVE ACTIONS
 </div>
-<div id="details"><?=$correctiveAction?></div>
+<div id="details"><?=$correctiveAction?><br></div>
 
 <div id="info">
 PREVENTIVE ACTIONS
 </div>
-<div id="details">Here is the preventive actions.</div>
+<div id="details">Here are the preventive actions.<br></div>
 
-<!--<div id="info">
-RESTORATION DETAILS
-</div>
-<div>
-<?php //echo $restorationDetails;?>
-</div>-->
 </body>
 </html>
 <?php
@@ -198,10 +192,10 @@ RESTORATION DETAILS
 ?>
 
 <?php ob_start();?>
-<div id="info">
+<div style="background-color:#C0C0C0;color:black;font-weight:bold;font-family:Courier;font-size: 110%;letter-spacing:4px;padding:5px 10px 5px 10px;">
 RESTORATION DETAILS
-</div>
-<div>
+</div><br>
+<div style="font-family:Courier">
 <?php echo $restorationDetails;?>
 </div>
 <?php
